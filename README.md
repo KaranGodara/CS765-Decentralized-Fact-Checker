@@ -15,7 +15,7 @@
 ```python3 main.py --help```
 - The above command will display the following:
 ```
-usage: run.py [-h] [--n N] [--q q] [--p p] [--r r] [--T_sim T_SIM] [--data OUTPUT_DIR]
+usage: python3 run.py [-h] [--n N] [--q q] [--p p] [--r r] [--T_sim T_SIM] [--data OUTPUT_DIR]
 
 Simulation of a Decentralized Fact Checker (DApp)
 
