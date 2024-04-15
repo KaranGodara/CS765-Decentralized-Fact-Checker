@@ -18,9 +18,21 @@ class Simulator:
 
         # Making the voters for this system
         self.voters = dict()
+
+        ######## For Malicious strategy 3 ##############
+        # cnt = 0
+        ################################################
+
         for id in range(self.N):
             # Initialising the voters
             self.voters[id] = Voter(id, self.q, self.p, self.env)
+
+            ######## For Malicious strategy 3 ##############
+            # if cnt < 125 and self.voters[id].honest == 1:
+            #     cnt += 1
+            #     self.voters[id].mark_vote_changer()
+            #     print(f"Changed personality for {id}")
+            ################################################
 
             # Printing initial info about each voter
             self.voters[id].print_info(f"{self.data_dir}/trust_{id}")
@@ -35,7 +47,7 @@ class Simulator:
         news_ID = 0
         time_bw_news = 10
         while True:
-            print(f"News with ID {news_ID} generated at {self.env.now} ")
+            # print(f"News with ID {news_ID} generated at {self.env.now} ")
             self.DApp.put_news(news_ID)
             news_ID += 1
             yield self.env.timeout(time_bw_news)

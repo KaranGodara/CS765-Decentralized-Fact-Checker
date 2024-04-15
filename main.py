@@ -9,12 +9,12 @@ def main():
     parser = argparse.ArgumentParser(description='Simulation of DApp trustworthiness calculation')
 
     # Adding arguments
-    parser.add_argument('--n', type=int, default=20, help='Number of voters')
-    parser.add_argument('--q', type=float, default=0.2, help='Percentage of malicious voters')
-    parser.add_argument('--p', type=float, default=0.8, help='Percentage of honest peers with 90% correctness probability')
+    parser.add_argument('--n', type=int, default=20, help='Number of voters in the DApp')
+    parser.add_argument('--q', type=float, default=0.2, help='Fraction of malicious voters')
+    parser.add_argument('--p', type=float, default=0.8, help='Fraction of honest voters with 90% correctness probability')
     parser.add_argument('--r', type=int, default=20, help='Average number of news coming to DApp in a day')
-    parser.add_argument('--data', type=str, default="data", help='Directory to store data of simulation')
-    parser.add_argument('--T_sim', type=int, default=1000000, help='Directory to store data of simulation')
+    parser.add_argument('--data', type=str, default="data", help='Output directory')
+    parser.add_argument('--T_sim', type=int, default=100000, help='Simulation time (in s)')
 
 
     # Parse the command-line arguments
@@ -59,6 +59,7 @@ def main():
 
             file.write(f"\tCorrect Votes : {sim.DApp.trustworthiness[id].num_correct}\n")
             file.write(f"\tIncorrect Votes : {sim.DApp.trustworthiness[id].num_incorrect}\n")
+            file.write(f"\tTruthworthiness : {sim.DApp.trustworthiness[id].trustworthiness}\n")
             file.write("\n")
 
 if __name__ == "__main__":

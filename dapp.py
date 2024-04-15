@@ -60,7 +60,7 @@ class DApp :
         while True:
             # Receving the news
             news = yield self.news_queue.get()
-            print(f"DApp : Got news with ID {news} at {self.env.now}")
+            # print(f"DApp : Got news with ID {news} at {self.env.now}")
 
             # Making news ready to get votes, -1 indicates vote not yet received
             self.votes_on_news[news] = [-1 for _ in range(self.N)]
@@ -68,14 +68,14 @@ class DApp :
 
             # Sending this news to all voters to vote on it
             for id in range(self.N):
-                print(f"DApp : Sending news {news} to voter {id}")
+                # print(f"DApp : Sending news {news} to voter {id}")
                 self.voter_links[id].send_news_to_voter(news)
 
     def make_decision_on_news(self, news):
         # Note for simulation every new's correct result is 1 and hence
         # malicious voters always vote 0, where honest voters with probability
         # 0.9 or 0.7, 1
-        print(f"Making decision on news with ID {news} at {self.env.now} ")
+        # print(f"Making decision on news with ID {news} at {self.env.now} ")
 
         # This stores the total votes saying news is correct (ie vote 1)
         votes_received = 0

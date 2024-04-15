@@ -21,38 +21,38 @@ class Trustworthiness:
         self.trustworthiness = 1
 
         self.min_trust = 1
-        self.max_trust = 1000
+        self.max_trust = 100
 
-        self.curr_max = 1000
+        self.curr_max = 100
 
     # function to help update the net correct votes required for further increase in
     # trustworthiness
     def set_new_net_required(self):
-        # If current trustworthiness >= 551, need 10*average_news_per_day net votes
+        # If current trustworthiness >= 51, need 10*average_news_per_day net votes
         # this helps in slow increase when already having high trustworthiness, to prevent
         # accumulation of voters with high trust scores
-        if self.trustworthiness >= 551:
+        if self.trustworthiness >= 51:
             self.curr_net_required = max(1, 10*self.average_news_per_day)
         # If current trustworthiness <= 50, need 0.1*average_news_per_day net votes
         # to increase trust, to intially fastly separate honest vs non-honest
-        elif self.trustworthiness <= 50:
+        elif self.trustworthiness <= 5:
             self.curr_net_required = max(1, 0.1*self.average_news_per_day)
         # Remaining updates are in between the two extremes
         else:
-            k = (self.trustworthiness - 1) / 50
+            k = (self.trustworthiness - 1) / 5
             self.curr_net_required = max(1, k*self.average_news_per_day)
 
     # This function dynamically decides what is the max rating a voter can acheive based on his 
-    # fraction of news correctly voted. We use this policy only when rating reaches atleast 501
+    # fraction of news correctly voted. We use this policy only when rating reaches atleast 51
     def update_curr_max(self):
-        if self.trustworthiness >= 501:
+        if self.trustworthiness >= 51:
             self.curr_max = int(((self.num_correct*1.0) / (self.num_correct + self.num_incorrect)) * self.max_trust)
 
-            # To prevent sudden fall of some voter who luckily reached 501 but his fraction says he should
-            # be below 500, hence we set curr_max as 501 for that case so that the voter doesn't fall but 
-            # stays at 501
-            if self.curr_max < 501:
-                self.curr_max = 501
+            # To prevent sudden fall of some voter who luckily reached 51 but his fraction says he should
+            # be below 50, hence we set curr_max as 51 for that case so that the voter doesn't fall but 
+            # stays at 51
+            if self.curr_max < 51:
+                self.curr_max = 51
     
     # Update the trustworthiness if possible, when voter votes correctly 
     def mark_correct(self):
