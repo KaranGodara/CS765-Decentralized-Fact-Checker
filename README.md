@@ -44,7 +44,7 @@ options:
 - The graphs for analysis of simulation is done by grapher.py
 - Note, the grapher require manual code changes to plot new graph for new data. Therefore, if wanting to use it, appropriately do these changes.
 - To run the grapher use the command:
-```usage: python3 grapher.py``` 
+```python3 grapher.py``` 
 
 ## Directory Structure
 - This directory contains the following files:
