@@ -21,7 +21,7 @@ Simulation of a Decentralized Fact Checker (DApp)
 
 options:
   -h, --help                  show this help message and exit
-  --n N                       Number of voters in the network
+  --n N                       Number of voters in the DApp
   --p p                       Fraction of honest voters with 90% correctness probability
   --q q                       Fraction of malicious voters 
   --r r                       Average number of news coming to DApp in a day
